@@ -34,11 +34,17 @@ toggleButton.setAttribute("data-action", "status-toggle");
 // Define the functions (e.g., toggleStatus, createTimestamp) and event listeners
 // here to handle the click event on the toggleButton [6, 7].
 function toggleStatus(e) {
-    document.querySelector("status-output");
+    e.preventDefault();
+    document.querySelector("#status-output");
+    if (statusOutput.classList.contains("hidden")) {
+        mainTitle.style.backgroundColor = "yellow";
+    } else {
+        mainTitle.style.backgroundColor = "";
+    }
     statusOutput.classList.toggle("hidden");
-    toggleButton.addEventListener("click", toggleStatus);
 }
 
+toggleButton.addEventListener("click", toggleStatus);
 /* ======================================= */
 // --- Task 10: Timed Animation ---
 // Define the startFlashing() and stopFlashing() functions using

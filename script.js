@@ -35,13 +35,21 @@ toggleButton.setAttribute("data-action", "status-toggle");
 // here to handle the click event on the toggleButton [6, 7].
 function toggleStatus(e) {
     e.preventDefault();
-    document.querySelector("#status-output");
-    if (statusOutput.classList.contains("hidden")) {
+    statusOutput.classList.toggle("hidden");
+    const isVisible = !statusOutput.classList.contains("hidden");
+    if (isVisible) {
         mainTitle.style.backgroundColor = "yellow";
+        createTimestamp();
     } else {
         mainTitle.style.backgroundColor = "";
     }
-    statusOutput.classList.toggle("hidden");
+}
+
+function createTimestamp() {
+    const span = document.createElement("span");
+    span.textContent = new Date().toLocaleTimeString();
+    span.style.display = "block";
+    statusOutput.appendChild(span);
 }
 
 toggleButton.addEventListener("click", toggleStatus);
